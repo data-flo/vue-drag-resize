@@ -1,6 +1,6 @@
-<g class="vdr" :style="style"
+<g class="vdr"
      :class="active || isActive ? 'active' : 'inactive'"
-     :transform="`translate(${style.left.replace('px','')}, ${style.top.replace('px','')})`"
+     :transform="`translate(${x}, ${y})`"
      @mousedown="bodyDown($event)"
      @touchstart="bodyDown($event)">
     <slot></slot>
