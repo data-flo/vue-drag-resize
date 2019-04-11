@@ -1,5 +1,5 @@
 <g class="vdr"
-     :class="active || isActive ? 'active' : 'inactive'"
+     :class="{ dragging: isDragging }"
      :transform="`translate(${x}, ${y})`"
      @mousedown="bodyDown($event)"
      @touchstart="bodyDown($event)">

@@ -144,7 +144,8 @@ export default {
             right: null,
             bottom: null,
             minWidth: this.minw,
-            minHeight: this.minh
+            minHeight: this.minh,
+            isDragging: false
         }
     },
 
@@ -316,12 +317,14 @@ export default {
             this.rawLeft = stickStartPos.left - delta.x;
             this.rawRight = stickStartPos.right + delta.x;
             this.$emit('dragging', this.rect);
+            this.isDragging = true;
         },
 
         bodyUp() {
             this.bodyDrag = false;
             this.$emit('dragging', this.rect);
             this.$emit('dragstop', this.rect);
+            this.isDragging = false;
 
             this.stickStartPos = {mouseX: 0, mouseY: 0, x: 0, y: 0, w: 0, h: 0};
             this.limits = {
