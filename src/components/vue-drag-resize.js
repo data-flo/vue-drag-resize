@@ -322,14 +322,13 @@ export default {
             this.isDragging = true;
         },
 
-        bodyUp() {
+        bodyUp(event) {
             this.bodyDrag = false;
-            this.$emit('dragstop', this.rect);
             this.isDragging = false;
             // this.$emit('dragging', this.rect);
             if (this.stickStartPos.left !== this.rawLeft || this.stickStartPos.top !== this.rawTop) {
                 this.$emit('dragstop', this.rect);
-            } else  {
+            } else if (!event.stopDragSelect) {
                 this.$emit('dragselect', this.rect);
             }
 
