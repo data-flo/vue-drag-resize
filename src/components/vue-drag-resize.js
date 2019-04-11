@@ -324,9 +324,9 @@ export default {
 
         bodyUp() {
             this.bodyDrag = false;
-            this.$emit('dragging', this.rect);
             this.$emit('dragstop', this.rect);
             this.isDragging = false;
+            // this.$emit('dragging', this.rect);
 
             this.stickStartPos = {mouseX: 0, mouseY: 0, x: 0, y: 0, w: 0, h: 0};
             this.limits = {
