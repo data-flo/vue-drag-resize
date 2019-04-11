@@ -327,6 +327,11 @@ export default {
             this.$emit('dragstop', this.rect);
             this.isDragging = false;
             // this.$emit('dragging', this.rect);
+            if (this.stickStartPos.left !== this.rawLeft || this.stickStartPos.top !== this.rawTop) {
+                this.$emit('dragstop', this.rect);
+            } else  {
+                this.$emit('dragselect', this.rect);
+            }
 
             this.stickStartPos = {mouseX: 0, mouseY: 0, x: 0, y: 0, w: 0, h: 0};
             this.limits = {
