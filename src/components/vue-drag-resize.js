@@ -316,7 +316,9 @@ export default {
             this.rawBottom = stickStartPos.bottom + delta.y;
             this.rawLeft = stickStartPos.left - delta.x;
             this.rawRight = stickStartPos.right + delta.x;
-            this.$emit('dragging', this.rect);
+            if (this.rawLeft !== stickStartPos.left || this.rawTop !== stickStartPos.top) {
+                this.$emit('dragging', this.rect);
+            } 
             this.isDragging = true;
         },
 
