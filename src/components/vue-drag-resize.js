@@ -306,10 +306,15 @@ export default {
 
         bodyMove(ev) {
             const stickStartPos = this.stickStartPos;
-
+            const touches = (ev && ev.touches && ev.touches.length > 0)
+                ? ev.touches[0]
+                : {
+                    pageX: 0,
+                    pageY: 0,
+                };
             let delta = {
-                x: (this.axis !== 'y' && this.axis !== 'none' ? stickStartPos.mouseX - (ev.pageX || ev.touches[0].pageX) : 0) / this.parentScaleX,
-                y: (this.axis !== 'x' && this.axis !== 'none' ? stickStartPos.mouseY - (ev.pageY || ev.touches[0].pageY) : 0) / this.parentScaleY
+                x: (this.axis !== 'y' && this.axis !== 'none' ? stickStartPos.mouseX - (ev.pageX || touches.pageX) : 0) / this.parentScaleX,
+                y: (this.axis !== 'x' && this.axis !== 'none' ? stickStartPos.mouseY - (ev.pageY || touches.pageY) : 0) / this.parentScaleY
             };
 
             this.rawTop = stickStartPos.top - delta.y;
